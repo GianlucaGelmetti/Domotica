@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Controllo Accessi</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#007bff" />
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    button {
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
+      padding: 20px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+    #response {
+      margin-top: 30px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      color: #333;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Controllo Accessi</h2>
+
+  <button onclick="sendCommand('cancelletto')">Cancelletto</button>
+  <button onclick="sendCommand('cancello-grande')">Cancello Grande</button>
+  <button onclick="sendCommand('basculante')">Basculante</button>
+  <button onclick="sendCommand('luci-garage')">Luci Garage</button>
+
+  <div id="response">Nessuna risposta ancora.</div>
+
+  <script>
+    function sendCommand(command) {
+      fetch(`https://tuo-server.it/comando/${command}`, {
+        method: 'GET',
+        credentials: 'include'
+      })
+      .then(response => response.text())
+      .then(text => {
+        document.getElementById('response').innerText = `Risposta: ${text}`;
+      })
+      .catch(error => {
+        document.getElementById('response').innerText = `Errore: ${error}`;
+      });
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
