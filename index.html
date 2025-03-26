@@ -15,7 +15,7 @@
             align-items: center;
             min-height: 100vh;
         }
-        h1 {
+        h2 {
             font-size: 24px;
             margin-bottom: 30px;
             color: #333;
@@ -31,10 +31,6 @@
             font-size: 18px;
             border-radius: 5px;
             text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
             margin-bottom: 15px;
             cursor: pointer;
         }
@@ -47,10 +43,6 @@
         .login-button:hover {
             background-color: #08306b;
         }
-        .icon {
-            font-size: 20px;
-            font-weight: bold;
-        }
         .disclaimer {
             font-size: 14px;
             color: #000;
@@ -62,20 +54,19 @@
 <body>
     <h2>Domotica Casa Lazise</h2>
 
-    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a53c1p1', 4000)">
-        <span class="icon">#</span>
+    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a53c1p1', 2000)">
         Apri Cancelletto
     </div>
-    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a15c1p1', 4000)">
-        <span class="icon">ðŸ’¡</span>
+    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a15c1p1', 2000)">
         Luci Garage
     </div>
-    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a21c1p1', 4000)">
-        <span class="icon">â›©ï¸</span>
+    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a21c1p1', 2000)">
         Cancello Grande
     </div>
-    <div class="link-button login-button" onclick="openTimedWindow('http://94.185.76.20:8000/webpass.htm', 39000)">
-        <span class="icon">ðŸ”‘</span>
+    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a14c1p3', 2000)">
+        Basculante
+    </div>
+    <div class="link-button login-button" onclick="openTimedWindow('http://94.185.76.20:8000/webpass.htm', 30000)">
         Login
     </div>
 
