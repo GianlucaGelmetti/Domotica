@@ -1,66 +1,99 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Controllo Accessi</title>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#007bff" />
-  <style>
-    body {
-      background-color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    button {
-      width: 90%;
-      max-width: 300px;
-      margin: 10px auto;
-      padding: 20px;
-      font-size: 18px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-    }
-    #response {
-      margin-top: 30px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      color: #333;
-      font-size: 16px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domotica Casa Lazise</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+            text-align: center;
+        }
+        .link-button {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            background-color: #2196F3;
+            color: white;
+            padding: 15px 0;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .link-button:hover {
+            background-color: #1976D2;
+        }
+        .login-button {
+            background-color: #0D47A1;
+        }
+        .login-button:hover {
+            background-color: #08306b;
+        }
+        .icon {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .disclaimer {
+            font-size: 14px;
+            color: #000;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-  <h2>Controllo Accessi</h2>
+    <h2>Domotica Casa Lazise</h2>
 
-  <button onclick="sendCommand('DO_Toggle.cgi?DO=a53c1p1')">Cancelletto</button>
-  <button onclick="sendCommand('cancello-grande')">Cancello Grande</button>
-  <button onclick="sendCommand('basculante')">Basculante</button>
-  <button onclick="sendCommand('luci-garage')">Luci Garage</button>
+    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a53c1p1', 4000)">
+        <span class="icon">#</span>
+        Apri Cancelletto
+    </div>
+    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a15c1p1', 4000)">
+        <span class="icon">ðŸ’¡</span>
+        Luci Garage
+    </div>
+    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a21c1p1', 4000)">
+        <span class="icon">â›©ï¸</span>
+        Cancello Grande
+    </div>
+    <div class="link-button login-button" onclick="openTimedWindow('http://94.185.76.20:8000/webpass.htm', 39000)">
+        <span class="icon">ðŸ”‘</span>
+        Login
+    </div>
 
-  <div id="response">Nessuna risposta ancora.</div>
+    <div class="disclaimer">
+        Alla prima apertura fai il login con utente/password <strong>admin/admin</strong>
+    </div>
 
-  <script>
-    function sendCommand(command) {
-      fetch(`http://94.185.76.20:8000/${command}`, {
-        method: 'GET',
-        credentials: 'include'
-      })
-      .then(response => response.text())
-      .then(text => {
-        document.getElementById('response').innerText = `Risposta: ${text}`;
-      })
-      .catch(error => {
-        document.getElementById('response').innerText = `Errore: ${error}`;
-      });
-    }
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
+    <script>
+        function openTimedWindow(url, timeout) {
+            const win = window.open(url, '_blank', 'width=600,height=400');
+            if (win) {
+                setTimeout(() => {
+                    win.close();
+                }, timeout);
+            } else {
+                alert("Il browser ha bloccato l'apertura del popup. Consenti i popup per questa pagina.");
+            }
+        }
+    </script>
 </body>
 </html>
