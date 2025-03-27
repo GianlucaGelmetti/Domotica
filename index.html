@@ -1,90 +1,129 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domotica Casa Lazise</title>
-    <style>
-        body {
-            background-color: white;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        h2 {
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: #333;
-            text-align: center;
-        }
-        .link-button {
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            background-color: #2196F3;
-            color: white;
-            padding: 15px 0;
-            font-size: 18px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-bottom: 15px;
-            cursor: pointer;
-        }
-        .link-button:hover {
-            background-color: #1976D2;
-        }
-        .login-button {
-            background-color: #0D47A1;
-        }
-        .login-button:hover {
-            background-color: #08306b;
-        }
-        .disclaimer {
-            font-size: 14px;
-            color: #000;
-            text-align: center;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domotica Casa Lazise</title>
+  <style>
+    body {
+      background-color: #f3f3f3;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    /* Riquadro principale che include titolo e bottoni, con sfondo grigio chiaro */
+    .main-container {
+      background-color: #d3d3d3; /* grigio chiaro */
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .title-container {
+      margin-bottom: 20px;
+    }
+    .title-container h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #333;
+      text-align: center;
+    }
+    /* Riquadro dei bottoni con sfondo leggermente sfumato */
+    .buttons-container {
+      background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    /* Stile dei bottoni con effetto 3D leggero */
+    .link-button {
+      width: 100%;
+      text-align: center;
+      background-color: #2196F3;
+      color: white;
+      padding: 15px 0;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .link-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .login-button {
+      background-color: #0D47A1;
+    }
+    .login-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .disclaimer {
+      font-size: 14px;
+      color: #000;
+      text-align: center;
+      margin-top: 20px;
+    }
+    @media (max-width: 400px) {
+      .link-button {
+        font-size: 16px;
+        padding: 12px 0;
+      }
+      .title-container h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h2>Domotica Casa Lazise</h2>
-
-    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a53c1p1', 2000)">
+  <div class="main-container">
+    <div class="title-container">
+      <h2>Domotica Casa Lazise</h2>
+    </div>
+    <div class="buttons-container">
+      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a53c1p1', 2000)">
         Apri Cancelletto
-    </div>
-    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a15c1p1', 2000)">
+      </div>
+      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a15c1p1', 2000)">
         Luci Garage
-    </div>
-    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a21c1p1', 2000)">
+      </div>
+      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a21c1p1', 2000)">
         Cancello Grande
-    </div>
-    <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a14c1p3', 2000)">
+      </div>
+      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a14c1p3', 2000)">
         Basculante
-    </div>
-    <div class="link-button login-button" onclick="openTimedWindow('http://94.185.76.20:8000/webpass.htm', 30000)">
+      </div>
+      <div class="link-button login-button" onclick="openTimedWindow('http://94.185.76.20:8000/webpass.htm', 30000)">
         Login
+      </div>
     </div>
-
-    <div class="disclaimer">
-        Alla prima apertura fai il login con utente/password <strong>admin/admin</strong>
-    </div>
-
-    <script>
-        function openTimedWindow(url, timeout) {
-            const win = window.open(url, '_blank', 'width=600,height=400');
-            if (win) {
-                setTimeout(() => {
-                    win.close();
-                }, timeout);
-            } else {
-                alert("Il browser ha bloccato l'apertura del popup. Consenti i popup per questa pagina.");
-            }
-        }
-    </script>
+  </div>
+  <div class="disclaimer">
+    Alla prima apertura fai il login con utente/password <strong>admin/admin</strong>
+  </div>
+  <script>
+    function openTimedWindow(url, timeout) {
+      const win = window.open(url, '_blank', 'width=600,height=400');
+      if (win) {
+        setTimeout(() => {
+          win.close();
+        }, timeout);
+      } else {
+        alert("Il browser ha bloccato l'apertura del popup. Consenti i popup per questa pagina.");
+      }
+    }
+  </script>
 </body>
 </html>
