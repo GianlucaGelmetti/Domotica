@@ -213,19 +213,19 @@ const DomoticaAPI = {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), CONFIG.requestTimeout);
 
-      // Prepara headers con token se autenticazione abilitata
-      const headers = {};
-      if (CONFIG.enableAuth && Auth.isAuthenticated()) {
-        headers['Authorization'] = `Bearer ${Auth.getToken()}`;
-      }
-
-      // Invia la richiesta
-      const response = await fetch(url, {
+      // Prepara opzioni fetch
+      const fetchOptions = {
         method: 'GET',
         mode: 'no-cors', // Necessario per server senza CORS
-        signal: controller.signal,
-        headers: headers
-      });
+        signal: controller.signal
+      };
+
+      // NOTA: Con mode 'no-cors' NON possiamo inviare headers custom
+      // Se hai bisogno di autenticazione, devi rimuovere 'no-cors' e configurare CORS sul server
+      // Oppure usare un reverse proxy (vedi nginx.conf.example)
+
+      // Invia la richiesta
+      const response = await fetch(url, fetchOptions);
 
       clearTimeout(timeoutId);
 
