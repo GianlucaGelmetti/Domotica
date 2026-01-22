@@ -3,183 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' http://94.185.76.20:8000 https://94.185.76.20:8000; style-src 'self'; script-src 'self'; img-src 'self' data:; font-src 'self';">
   <title>Domotica Casa Lazise</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-    
-    /* Riquadro principale con effetto 3D e sfumature blu */
-    .main-container {
-      background: linear-gradient(145deg, #4a8db7, #3c7ea8);
-      padding: 25px;
-      border-radius: 15px;
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 20px rgba(33, 67, 101, 0.4), 
-                  inset 0 -5px 10px rgba(33, 67, 101, 0.3),
-                  inset 0 5px 10px rgba(255, 255, 255, 0.2);
-      transform: perspective(800px) rotateX(2deg);
-      transition: transform 0.3s ease;
-    }
-    
-    .main-container:hover {
-      transform: perspective(800px) rotateX(0deg);
-    }
-    
-    .title-container {
-      margin-bottom: 25px;
-      position: relative;
-    }
-    
-    .title-container h2 {
-      margin: 0;
-      font-size: 28px;
-      color: #ffffff;
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-    
-    .title-container h2:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 25%;
-      width: 50%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #b4e0fd, transparent);
-    }
-    
-    /* Riquadro dei bottoni con sfondo sfumato blu chiaro */
-    .buttons-container {
-      background: linear-gradient(135deg, #c7e9f7, #a1d6e2);
-      padding: 20px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.3),
-                  inset 0 -2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Stile dei bottoni con effetto 3D pronunciato */
-    .link-button {
-      width: 100%;
-      text-align: center;
-      background: linear-gradient(to bottom, #1976d2, #1565c0);
-      color: white;
-      padding: 15px 0;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-    
-    .link-button:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      background: linear-gradient(to bottom, #2196f3, #1976d2);
-    }
-    
-    .link-button:active {
-      transform: translateY(2px);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-    
-    .login-button {
-      background: linear-gradient(to bottom, #0d47a1, #0a3880);
-    }
-    
-    .login-button:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      background: linear-gradient(to bottom, #1565c0, #0d47a1);
-    }
-    
-    .login-button:active {
-      transform: translateY(2px);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-    
-    .disclaimer {
-      font-size: 15px;
-      color: #0d47a1;
-      text-align: center;
-      margin-top: 20px;
-      padding: 10px 15px;
-      background-color: rgba(255, 255, 255, 0.5);
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    @media (max-width: 400px) {
-      .link-button {
-        font-size: 16px;
-        padding: 12px 0;
-      }
-      .title-container h2 {
-        font-size: 22px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <div class="main-container">
     <div class="title-container">
       <h2>Domotica Casa Lazise</h2>
     </div>
-    <div class="buttons-container">
-      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a53c1p1', 2000)">
+    <div class="buttons-container" role="group" aria-label="Controlli domotica">
+      <button id="apri-cancelletto" class="link-button" type="button" aria-label="Apri il cancelletto di ingresso">
         Apri Cancelletto
-      </div>
-      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a21c1p1', 2000)">
+      </button>
+      <button id="cancello-grande" class="link-button" type="button" aria-label="Apri il cancello grande">
         Cancello Grande
-      </div>
-      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Pulse.cgi?DO=a14c1p3', 2000)">
+      </button>
+      <button id="basculante" class="link-button" type="button" aria-label="Apri il basculante del garage">
         Basculante
-      </div>
-      <div class="link-button" onclick="openTimedWindow('http://94.185.76.20:8000/DO_Toggle.cgi?DO=a15c1p1', 2000)">
+      </button>
+      <button id="luci-garage" class="link-button" type="button" aria-label="Accendi o spegni le luci del garage">
         Luci Garage
-      </div>
-      <div class="link-button login-button" onclick="openTimedWindow('http://94.185.76.20:8000/webpass.htm', 30000)">
+      </button>
+      <button id="login-button" class="link-button login-button" type="button" aria-label="Accedi al pannello di amministrazione">
         Login
-      </div>
+      </button>
     </div>
   </div>
   <div class="disclaimer">
-    Alla prima apertura fai il login con utente/password <strong>admin/admin</strong>
+    Alla prima apertura effettua il login con le tue credenziali
   </div>
-  <script>
-    function openTimedWindow(url, timeout) {
-      const win = window.open(url, '_blank', 'width=600,height=400');
-      if (win) {
-        setTimeout(() => {
-          win.close();
-        }, timeout);
-      } else {
-        alert("Il browser ha bloccato l'apertura del popup. Consenti i popup per questa pagina.");
-      }
-    }
-  </script>
+
+  <!-- Modale di Login -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-login-modal" class="close-modal">&times;</span>
+      <h3>Accedi</h3>
+      <form id="auth-login-form">
+        <div class="form-group">
+          <label for="auth-username">Username</label>
+          <input type="text" id="auth-username" name="username" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="auth-password">Password</label>
+          <input type="password" id="auth-password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="link-button">Accedi</button>
+      </form>
+      <p class="modal-note">Nota: L'autenticazione è attualmente disabilitata. Puoi abilitarla modificando <code>enableAuth: true</code> in app.js</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

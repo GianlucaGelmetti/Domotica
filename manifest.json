@@ -1,15 +1,26 @@
 {
-  "name": "Controllo Accessi",
-  "short_name": "Accessi",
-  "start_url": ".",
+  "name": "Domotica Casa Lazise",
+  "short_name": "Domotica",
+  "description": "Controllo accessi e dispositivi domotici per Casa Lazise",
+  "start_url": "./index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#007bff",
+  "theme_color": "#1976d2",
   "icons": [
     {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png",
+      "src": "./images/icon-192.svg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./images/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "it"
 }

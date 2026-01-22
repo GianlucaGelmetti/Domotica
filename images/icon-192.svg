@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976d2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d47a1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="192" height="192" rx="25" fill="url(#bgGrad)"/>
+
+  <!-- Casa -->
+  <g transform="translate(96, 96)">
+    <!-- Tetto -->
+    <path d="M -45,-30 L 0,-60 L 45,-30 L 45,-15 L 35,-15 L 35,-25 L 0,-50 L -35,-25 L -35,-15 L -45,-15 Z"
+          fill="#FFF" opacity="0.95"/>
+
+    <!-- Corpo casa -->
+    <rect x="-40" y="-15" width="80" height="55" fill="#FFF" opacity="0.9"/>
+
+    <!-- Porta -->
+    <rect x="-12" y="10" width="24" height="30" fill="#0d47a1" rx="2"/>
+    <circle cx="6" cy="25" r="2" fill="#FFF"/>
+
+    <!-- Finestre -->
+    <rect x="-32" y="-5" width="15" height="15" fill="#64b5f6" rx="1"/>
+    <line x1="-32" y1="2.5" x2="-17" y2="2.5" stroke="#0d47a1" stroke-width="1.5"/>
+    <line x1="-24.5" y1="-5" x2="-24.5" y2="10" stroke="#0d47a1" stroke-width="1.5"/>
+
+    <rect x="17" y="-5" width="15" height="15" fill="#64b5f6" rx="1"/>
+    <line x1="17" y1="2.5" x2="32" y2="2.5" stroke="#0d47a1" stroke-width="1.5"/>
+    <line x1="24.5" y1="-5" x2="24.5" y2="10" stroke="#0d47a1" stroke-width="1.5"/>
+  </g>
+
+  <!-- Icona wireless/connessione -->
+  <g transform="translate(150, 42)">
+    <circle cx="0" cy="0" r="3" fill="#FFF"/>
+    <path d="M -8,-8 Q -8,-15 0,-15 Q 8,-15 8,-8"
+          stroke="#FFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M -14,-14 Q -14,-24 0,-24 Q 14,-24 14,-14"
+          stroke="#FFF" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+  </g>
+</svg>
