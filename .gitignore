@@ -1,0 +1,68 @@
+# ============================================
+# .gitignore per Domotica Casa Lazise
+# ============================================
+
+# File di configurazione con dati sensibili
+config.local.js
+.env
+.env.local
+.env.*.local
+
+# Certificati SSL
+*.pem
+*.crt
+*.key
+*.csr
+
+# Backup e file temporanei
+*.backup
+*.bak
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
+logs/
+npm-debug.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE e editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# Node modules (se usi build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+build/
+.cache/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Documentazione generata
+docs/generated/
+
+# File specifici locali
+nginx.conf
+# (nginx.conf.example rimane nel repo)
